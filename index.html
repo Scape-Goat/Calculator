@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="index.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      var Output = document.createElement("h3"); document.body.appendChild(Output).setAttribute("id", "Calc");
+        Output.textContent = ""
+    
+    var currentLine = "";
+    
+    function addToLine(text){
+        if(currentLine == "ERROR: Invalid Input" ){
+            currentLine = ""
+        }
+        currentLine +=text;
+        Output.textContent = currentLine;
+    }
+    function clearLine(){
+        currentLine = "";
+        Output.textContent = currentLine;
+    }
+
+    function processLine(){
+        try{
+        currentLine = eval(currentLine);
+        }
+        catch{
+            currentLine = "ERROR: Invalid Input"
+        }
+        Output.textContent = currentLine;
+    }
+
+
+    function Backspace(){
+        if(currentLine == "ERROR: Invalid Input" ){
+            currentLine = ""
+        }
+        currentLine = currentLine.substr(0,currentLine.length-1);
+    }
+
+    document.body.addEventListener("keydown", evt => {
+        window.focus();
+            evt.preventDefault();
+            console.log(evt.key)
+            switch (evt.key) {
+                case "0":addToLine("0"); break;
+                case "1":addToLine("1"); break;
+                case "2":addToLine("2"); break;
+                case "3":addToLine("3"); break;
+                case "4":addToLine("4"); break;
+                case "5":addToLine("5"); break;
+                case "6":addToLine("6"); break;
+                case "7":addToLine("7"); break;
+                case "8":addToLine("8"); break;
+                case "9":addToLine("9"); break;
+                
+                case "(":addToLine("("); break;
+                case ")":addToLine(")"); break;
+
+                case "+":addToLine("+"); break;
+                case "-":addToLine("-"); break;
+                case "/":addToLine("/"); break;
+                case "*":addToLine("*"); break;
+                case "%":addToLine("/100"); break;
+                
+                case "Enter":processLine(); break;
+                case "c":clearLine(); break;
+                case "C":clearLine(); break;
+
+                case "Backspace": Backspace(); break;
+
+            }
+            Output.textContent = currentLine;
+    
+    });
+
+
+
+
+    </script>
+    <div id = "Calc">
+    <button onclick = "addToLine('(')" > ( </button>
+    <button onclick = "addToLine(')')"> ) </button>
+    <button onclick = "addToLine('/100')"> %</button>
+    <button onclick = "clearLine()"> AC </button>
+    <br>
+    <button onclick = "addToLine('7')"> 7 </button>
+    <button onclick = "addToLine('8')"> 8 </button>
+    <button onclick = "addToLine('9')"> 9 </button>
+    <button onclick = "addToLine('/')"> / </button>
+    <br>
+    <button onclick = "addToLine('4')"> 4 </button>
+    <button onclick = "addToLine('5')"> 5 </button>
+    <button onclick = "addToLine('6')"> 6 </button>
+    <button onclick = "addToLine('*')"> X </button>
+    <br>
+    <button onclick = "addToLine('1')"> 1 </button>
+    <button onclick = "addToLine('2')"> 2 </button>
+    <button onclick = "addToLine('3')"> 3 </button>
+    <button onclick = "addToLine('-')"> - </button>
+    <br>
+    <button onclick = "addToLine('.')"> . </button>
+    <button onclick = "addToLine('0')"> 0 </button>
+    <button onclick = "processLine()"> = </button>
+    <button onclick = "addToLine('+')"> + </button>
+    </div>
+ 
+</body>
+</html>

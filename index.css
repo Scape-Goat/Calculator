@@ -1,0 +1,26 @@
+button{
+    width: 50pt;
+    height: 50pt;
+    font-size: 25pt;
+}
+h3{
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    width: 200pt;
+    height: 30pt;
+font-size: 15pt;
+font-family: serif;
+line-height: 30pt;
+    text-align: right;
+}
+#Calc{
+    color: darkblue;
+
+    width: 210pt;
+    
+    border: 5pt double black;
+    
+    background: linear-gradient(red, yellow);
+}
